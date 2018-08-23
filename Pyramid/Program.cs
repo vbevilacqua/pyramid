@@ -72,5 +72,34 @@ namespace Pyramid
                     .Cast<Match>()
                     .Select(i => int.Parse(i.Value)).ToArray();
         }
+
+        private static int WalkThroughTheNode(this int[,] tableHolder)
+        {
+            result = tableHolder[0,0];
+            bool lastNumberIsOdd = IsOdd(result);
+
+            for (var i = 1; i < tableHolder.GetLength(0); i++)
+            {
+                for (var j = 0; j < tableHolder.GetLength(0); j++)
+                {
+                    if (tableHolder[i, j] > 0 && lastColumn == j) {
+                        var a = tableHolder[i, j];
+                        var b = tableHolder[i, j + 1];
+
+
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static bool IsOdd(this int number)
+        {
+            if(number%2 == 0)
+                return false;
+
+            return true;
+        }
     }
 }
