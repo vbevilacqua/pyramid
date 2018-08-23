@@ -18,9 +18,12 @@ namespace Pyramid
             //Console.ReadKey();
         }
 
-        public static string[] GetSum(string input)
+        public static int GetSum(string input)
         {
-            return TransformInputToArray(input);
+            int result = TransformInputToArray(input)
+                .TransformTo2DArray()
+                .WalkThroughTheNode();
+            return result;
         }
 
         private static string GetInput()
@@ -50,7 +53,7 @@ namespace Pyramid
             return input.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        private static int[,] TransformTo2Darray(this string[] arrayOfRowsByNewlines)
+        private static int[,] TransformTo2DArray(this string[] arrayOfRowsByNewlines)
         {
             var tableHolder = new int[arrayOfRowsByNewlines.Length, arrayOfRowsByNewlines.Length + 1];
 
@@ -70,7 +73,7 @@ namespace Pyramid
                 Regex
                     .Matches(rows, "[0-9]+")
                     .Cast<Match>()
-                    .Select(i => int.Parse(i.Value)).ToArray();
+                    .Select(m => int.Parse(m.Value)).ToArray();
         }
 
         private static int WalkThroughTheNode(this int[,] tableHolder)
