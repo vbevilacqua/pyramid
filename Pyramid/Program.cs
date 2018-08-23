@@ -94,6 +94,12 @@ namespace Pyramid
             return result;
         }
 
+        private static void UpdateResultAndColumn(int number, int column)
+        {
+            result += number;
+            lastColumn = column;
+        }
+
         private static bool IsOdd(this int number)
         {
             if(number%2 == 0)
