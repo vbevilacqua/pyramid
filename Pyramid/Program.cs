@@ -44,7 +44,7 @@ namespace Pyramid
             131 171 522 137 217 224 291 413 528 520 227 229 928
             223 626 034 683 839 052 627 310 713 999 629 817 410 121
             924 622 911 233 325 139 721 218 253 223 107 233 230 124 233";
-// 215 + 192 + 269 + 836 + 805 + 728 + 433  + 528 + 863 + 632 + 931 + 778 + 413 + 310 + 253 = 8186
+            // 215 + 192 + 269 + 836 + 805 + 728 + 433  + 528 + 863 + 632 + 931 + 778 + 413 + 310 + 253 = 8186
             return input;
         }
 
@@ -69,8 +69,7 @@ namespace Pyramid
 
         private static int[] ExtractNumber(this string rows)
         {
-            return
-                Regex
+            return Regex
                     .Matches(rows, "[0-9]+")
                     .Cast<Match>()
                     .Select(m => int.Parse(m.Value)).ToArray();
@@ -85,11 +84,32 @@ namespace Pyramid
             {
                 for (var j = 0; j < tableHolder.GetLength(0); j++)
                 {
-                    if (tableHolder[i, j] > 0 && lastColumn == j) {
+                    if (tableHolder[i, j] > 0 && lastColumn == j)
+                    {
                         var a = tableHolder[i, j];
                         var b = tableHolder[i, j + 1];
 
+                        if(IsOdd(a) == IsOdd(b))
+                        {
+                            if(a > b)
+                            {
+                                UpdateResultAndColumn(a, j);
+                            } else
+                            {
+                                UpdateResultAndColumn(b, j +1);
+                            }
+                            lastNumberIsOdd = IsOdd(a);
+                        } else if(lastNumberIsOdd != IsOdd(a))
+                        {
+                            UpdateResultAndColumn(a, j);
+                            lastNumberIsOdd = IsOdd(a);
+                        } else
+                        {
+                            UpdateResultAndColumn(b, j+1);
+                            lastNumberIsOdd = IsOdd(b);
+                        }
 
+                        break;
                     }
                 }
             }
