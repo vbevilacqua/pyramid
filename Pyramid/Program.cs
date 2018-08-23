@@ -18,7 +18,7 @@ namespace Pyramid
             //Console.ReadKey();
         }
 
-        public static string[]  GetSum(string input)
+        public static string[] GetSum(string input)
         {
             return TransformInputToArray(input);
         }
@@ -48,6 +48,20 @@ namespace Pyramid
         private static string[] TransformInputToArray(string input)
         {
             return input.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private static int[,] TransformTo2Darray(this string[] arrayOfRowsByNewlines)
+        {
+            var tableHolder = new int[arrayOfRowsByNewlines.Length, arrayOfRowsByNewlines.Length + 1];
+
+            for (var row = 0; row < arrayOfRowsByNewlines.Length; row++)
+            {
+                var eachCharactersInRow = arrayOfRowsByNewlines[row].ExtractNumber();
+
+                for (var column = 0; column < eachCharactersInRow.Length; column++)
+                    tableHolder[row, column] = eachCharactersInRow[column];
+            }
+            return tableHolder;
         }
     }
 }
