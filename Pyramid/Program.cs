@@ -63,5 +63,14 @@ namespace Pyramid
             }
             return tableHolder;
         }
+
+        private static int[] ExtractNumber(this string rows)
+        {
+            return
+                Regex
+                    .Matches(rows, "[0-9]+")
+                    .Cast<Match>()
+                    .Select(i => int.Parse(i.Value)).ToArray();
+        }
     }
 }
