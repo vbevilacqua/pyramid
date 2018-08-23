@@ -24,7 +24,7 @@ the bottom. If there are multiple paths giving the same sum, you can choose any 
 4 5 2 3 <br />
 
 # Output:
-Max sum: 16
+Max sum: 16  <br />
 Path: 1, 8, 5, 2
 
 # Challenge 
