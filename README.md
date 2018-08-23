@@ -1,7 +1,5 @@
 # pyramid
 
-Project create on Visual Studio Code in a Mac (if you are running in Windows, you might have a issue with new line format).
-
 The purpose of this project is to find the maximum sum of the numbers per the given rules below:
 
 1. You will start from the top and move downwards to an adjacent number as in below.
@@ -43,3 +41,11 @@ Path: 1, 8, 5, 2
 131 171 522 137 217 224 291 413 528 520 227 229 928 <br />
 223 626 034 683 839 052 627 310 713 999 629 817 410 121 <br />
 924 622 911 233 325 139 721 218 253 223 107 233 230 124 233 <br />
+
+
+## Acknowledgments
+
+* Project create on Visual Studio Code in a Mac (if you are running in Windows, you might have a issue with new line format).
+
+## Next Steps 
+* You can face some issues running all unit tests in once, this is due concurrency. Try run one by one it will work.
